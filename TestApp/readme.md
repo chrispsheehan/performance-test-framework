@@ -1,18 +1,18 @@
-# PerformanceTestFramework
+### Dockerizing a Nodejs App
 
-## Resources
-
-[Guide to install](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)
-
-## Run it
-
-```bash
-docker build -t node-web-app .
-docker run -p 49160:8080 -d node-web-app
+##### Run
+```
+docker-compose up
 ```
 
-## Check it
-
-```bash
-curl -i localhost:49160 
+##### Other Commands
 ```
+docker-compose up -d # run in background
+docker-compose down # stop and remove the created services
+docker-compose stop # stop the services
+docker-compose start # start the services
+docker-compose run <service> # run a specific service
+```
+
+###### Further Reading
+Please check [Dockerizing nodejs app](https://itnext.io/lets-dockerize-a-nodejs-express-api-22700b4105e4) on medium.

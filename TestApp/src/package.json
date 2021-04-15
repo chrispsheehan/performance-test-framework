@@ -1,13 +1,17 @@
 {
-  "name": "docker_web_app",
-  "version": "1.0.0",
-  "description": "Node.js on Docker",
-  "author": "First Last <first.last@example.com>",
+  "name": "nodes-docker-medium",
   "main": "server.js",
+  "description": "",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
+  "homepage": "https://github.com/rama41222/nodes-docker-medium#readme",
   "dependencies": {
-    "express": "^4.16.1"
-  }
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  },
+  "license": "ISC"
 }
