@@ -16,9 +16,13 @@ export let options = {
 
 export default function() {
 
-  let res = http.get("http://localhost:49160/");
+  let res = http.get("http://localhost:49160/slow/");
 
   check(res, {
     "is status 200": (r) => r.status === 200
   });
+
+  check(res, {
+    "json": (r) => r.body === 200
+  });  
 };
