@@ -12,6 +12,13 @@ app.get('/', (req, res) => {
     res.status(200).send('hello world :D');
 });
 
+app.get('/slow/', (req, res) => {
+    
+    setTimeout(function() {
+        res.json(["badgers"]);
+    }, 5000);    
+});
+
 app.listen(config.port, config.host, (e)=> {
     if(e) {
         throw new Error('Internal Server Error');
