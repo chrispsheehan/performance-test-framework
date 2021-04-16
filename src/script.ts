@@ -1,4 +1,4 @@
-import { check } from "k6";
+import { check, group } from "k6";
 import http from "k6/http";
 
 const BASE_URI = 'http://localhost:3000'
@@ -17,13 +17,17 @@ export let options = {
 
 export default function() {
 
-  let res = http.get(`${BASE_URI}/`);
+  group('should work', () => {
+    
+    let res = http.get(`${BASE_URI}/`);
 
-  check(res, {
-    "is status 200": (r) => r.status === 200
-  });
-
-  check(res, {
-    "json": (r) => r.body === 200
-  });  
+    check(res, {
+      "is status 200": (r) => r.status === 200
+    });
+  
+    check(res, {
+      "json": (r) => r.body === {"status":"OK"}
+    }); 
+  })
+ 
 };
