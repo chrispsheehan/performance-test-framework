@@ -6,7 +6,8 @@ const port = 3000
 app.get('/', (req, res) => {
 
     console.log('hit OK endpoint');
-    res.status(200).send('hello world :D');
+    res.status(200)
+    .json({status: "OK"});
 });
 
 app.get('/slow/', (req, res) => {
