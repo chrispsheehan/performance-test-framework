@@ -5,7 +5,7 @@ const port = 3000
 
 app.get('/', (req, res) => {
 
-    console.log('hit OK enpoint');
+    console.log('hit OK endpoint');
     res.status(200).send('hello world :D');
 });
 
