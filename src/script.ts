@@ -22,12 +22,14 @@ export default function() {
     let res = http.get(`${BASE_URI}/`);
 
     check(res, {
+
       "is status 200": (r) => r.status === 200
     });
   
     check(res, {
+
       "json": (r) => {
-        console.log("blah" + r.body)
+
         r.body === {"status":"OK"}
       }
     }); 
@@ -38,7 +40,18 @@ export default function() {
     let res = http.get(`${BASE_URI}/slow/`);
 
     check(res, {
+
       "is status 200": (r) => r.status === 200
     });
   })
+
+  group('should error', () => {
+    
+    let res = http.get(`${BASE_URI}/error/`);
+
+    check(res, {
+
+      "is status 500": (r) => r.status === 500
+    });
+  })  
 };
