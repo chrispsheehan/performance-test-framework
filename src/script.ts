@@ -26,8 +26,19 @@ export default function() {
     });
   
     check(res, {
-      "json": (r) => r.body === {"status":"OK"}
+      "json": (r) => {
+        console.log("blah" + r.body)
+        r.body === {"status":"OK"}
+      }
     }); 
   })
- 
+
+  group('should work, but slowly', () => {
+    
+    let res = http.get(`${BASE_URI}/slow/`);
+
+    check(res, {
+      "is status 200": (r) => r.status === 200
+    });
+  })
 };

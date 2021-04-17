@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
 
     console.log('hit OK endpoint');
     res.status(200)
-    .json({status: "OK"});
+    .json({"status": "OK"});
 });
 
 app.get('/slow/', (req, res) => {
