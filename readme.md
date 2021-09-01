@@ -1,4 +1,8 @@
-# BankAccountsTestFramework
+# PerformanceTestFramework
+
+These tests are currently pointed at the [MockApp](MockApp).
+
+To target another URI remove the ``mockapp`` service and set the ``APP_DOMAIN`` environmental variable within the [docker-compose](docker-compose.yaml) file.
 
 References:
 
@@ -21,8 +25,6 @@ APP_DOMAIN=http://localhost:8080 k6 run dist/tests.js --config dist/options/smok
 ## Run in docker
 
 ```bash
-docker-compose up build
-
 docker-compose run k6 run /dist/tests.js --config /dist/options/smoke.json --http-debug
 ```
 
