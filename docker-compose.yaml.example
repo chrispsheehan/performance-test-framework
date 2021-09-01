@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:         
+
+  build:
+    image: node:16.5-alpine
+    volumes:
+      - ./:/app
+    command: npm run build --prefix /app
+
+  k6:
+    depends_on:
+      build:
+        condition: service_started  
+    image: loadimpact/k6
+    volumes:
+      - ./dist:/dist
+    environment:
+      - APP_DOMAIN=http://someservice.com/api        
