@@ -1,0 +1,12 @@
+{
+    "thresholds": {
+      "checks": [
+          { 
+            "threshold": "rate == 1.00", 
+            "abortOnFail": true 
+          }
+        ]
+    },
+    "vus": 1,
+    "iterations": 1
+}

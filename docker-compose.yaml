@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+
+  mockapp:
+    build: ./MockApp/
+    container_name: mockapp
+    volumes:
+      - ./MockApp/src:/base
+      - ./MockApp/state:/state
+    ports: 
+      - "8080:8080"
+      - "8090:90"
+    environment:
+      - "WATCH=true"
+      - "STATEFILE=default.json"
+    networks: 
+      - mockservice            
+
+  build:
+    image: node:16.5-alpine
+    volumes:
+      - ./:/app
+    command: npm run build --prefix /app
+
+  k6:
+    depends_on:
+      build:
+        condition: service_started
+      mockapp:
+        condition: service_started      
+    image: loadimpact/k6
+    volumes:
+      - ./dist:/dist
+    environment:
+      - APP_DOMAIN=http://mockapp:8080      
+    networks: 
+      - mockservice           
+
+networks:
+    mockservice:
+        name: mockservice    
