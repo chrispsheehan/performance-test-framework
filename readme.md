@@ -1,8 +1,8 @@
 # PerformanceTestFramework
 
-These tests are currently pointed at the [MockApp](MockApp).
+These example tests are currently pointed at the [MockApp](MockApp), which is hosted in Docker.
 
-To target another URI remove the ``mockapp`` service and set the ``APP_DOMAIN`` environmental variable within the [docker-compose](docker-compose.yaml) file.
+To target another URI remove the ``mockapp`` service and set the ``APP_DOMAIN`` environmental variable within the [docker-compose](docker-compose.yaml) file. As per [example](docker-compose.yaml.example).
 
 References:
 
