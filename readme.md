@@ -30,7 +30,7 @@ docker-compose run k6 run /dist/tests.js --config /dist/options/smoke.json --htt
 
 ## Example output
 
-```javascript
+```bash
      █ setup
 
      █ create user
