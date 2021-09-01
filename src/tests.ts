@@ -28,8 +28,6 @@ export default (_headers: Params) => {
 
     let res = createUser(__ENV.APP_DOMAIN, _headers);
 
-    console.log('base' + __ENV.APP_DOMAIN);
-
     check(res, { 
       'get user': (r) => r.status === 201 
     });
