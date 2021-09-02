@@ -1,4 +1,4 @@
-# Scrach Pad
+# Scratch Pad
 
 ```bash
 cd scratchpad
