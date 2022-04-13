@@ -14,7 +14,7 @@ export let options = {
 
 let token = "somethingverysecret";
 //default blank getsandbox api
-let _url = "https://misty-paper-8673.getsandbox.com"
+let _url = "[APIUrl]"
 
 export function setup() {
 
