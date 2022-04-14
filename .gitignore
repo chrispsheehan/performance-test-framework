@@ -3,3 +3,6 @@ node_modules/
 
 # generate output
 dist/
+
+# Sandbox mock state
+state/
