@@ -25,7 +25,7 @@ APP_DOMAIN=http://localhost:8080 k6 run dist/tests.js --config dist/options/smok
 ## Run in docker
 
 ```bash
-docker-compose run k6 run /dist/tests.js --config /dist/options/smoke.json --http-debug
+docker-compose run --rm k6
 ```
 
 ## Example output

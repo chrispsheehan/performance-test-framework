@@ -22,3 +22,7 @@ Sandbox.define('/users', 'GET', getUsersHandler);
 
 // Using named route parameters to simulate getting a specific user
 Sandbox.define('/users/{userid}', 'GET', getUserByIdHandler);
+
+Sandbox.define('/health', 'GET', function(req, res) {
+    res.send('OK');
+});
