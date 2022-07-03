@@ -16,5 +16,5 @@ jobs:
         node-version: 18.x
     - name: Install
       run: npm install
-    - name: build
-      run: npm run build
+    - name: Bundle
+      run: webpack
