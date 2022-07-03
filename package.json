@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "@babel/core": "^7.10.2",
-    "@babel/plugin-transform-block-scoping": "^7.14.1",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
     "@babel/plugin-proposal-object-rest-spread": "^7.10.1",
+    "@babel/plugin-transform-block-scoping": "^7.14.1",
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-typescript": "^7.10.1",
     "@types/faker": "^5.5.5",
@@ -27,6 +27,6 @@
     "webpack": "^4.43.0"
   },
   "devDependencies": {
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.12"
   }
 }
