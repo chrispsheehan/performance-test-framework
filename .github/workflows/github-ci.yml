@@ -6,15 +6,15 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18.x
-    - name: Install
-      run: npm install
-    - name: Bundle
-      run: webpack
+    build:
+        runs-on: ubuntu-latest
+        steps: 
+            - name: Checkout project
+              uses: actions/checkout@v2
+            - name: Setup Node.js
+              uses: actions/setup-node@v2.1.4
+              with:
+                node-version: 18
+            - name: Build
+              uses: alexthemaster/action-build-typescript@v1.2.1
+              run: npm run build
