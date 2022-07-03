@@ -15,8 +15,6 @@ jobs:
       with:
         node-version: 18.x
     - name: Install
-      working-directory: ./src
       run: npm install
     - name: build
-      working-directory: ./src
       run: npm run build
