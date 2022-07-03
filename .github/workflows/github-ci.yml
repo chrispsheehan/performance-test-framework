@@ -14,5 +14,4 @@ jobs:
             - name: Setup Node.js
               uses: actions/setup-node@v2.1.4
             - name: Build
-              uses: alexthemaster/action-build-typescript@v1.2.1
-              run: npm run build
+              run: npm run bundle
