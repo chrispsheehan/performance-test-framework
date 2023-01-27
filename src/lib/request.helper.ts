@@ -1,6 +1,5 @@
 import { Params } from 'k6/http';
 
-
 export function createRequestConfig () : Params {
 
   return {
