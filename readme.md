@@ -2,19 +2,22 @@
 
 These example tests are currently pointed at the [MockApp](MockApp), which is hosted in Docker.
 
-To target another URI remove the ``mockapp`` service and set the ``APP_DOMAIN`` environmental variable within the [docker-compose](docker-compose.yaml) file. As per [example](docker-compose.yaml.example).
+To target another URI remove the ``mock`` service and set the ``APP_DOMAIN`` environmental variable within the [docker-compose](docker-compose.yaml) file.
 
 References:
 
 - [TypeScript](https://www.typescriptlang.org/)
-
 - [k6](https://k6.io/)
-
 - [Example](https://github.com/go-automate/k6-typescript-framework)
-
 - [Using node modules i.e. faker](https://github.com/k6io/template-es6)
+- [Mock api repository](https://github.com/chrispsheehan/simple-mock)
 
 ## Run in docker-compose
+
+- The below command will;
+  - Start a target mock api
+  - Build the test code
+  - Execute the tests via k6
 
 ```bash
 docker-compose run --rm k6-runner && docker-compose stop
