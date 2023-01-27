@@ -6,7 +6,7 @@ services:
     image: chrispsheehan/example-mock:6d94d1
     container_name: mock
     volumes:
-      - ./state.json:/state.json
+      - ./state/state.json:/state.json
     ports: 
       - "8080:8080"
     environment:
