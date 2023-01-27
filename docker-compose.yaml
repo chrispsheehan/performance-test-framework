@@ -2,43 +2,40 @@ version: '3.7'
 
 services:
 
-  mockapp:
-    build: ./MockApp/
-    container_name: mockapp
-    volumes:
-      - ./MockApp/src:/base
-      - ./MockApp/state:/state
+  mock:
+    image: chrispsheehan/example-mock:6d94d1
+    container_name: mock
     ports: 
       - "8080:8080"
-      - "8090:90"
     environment:
-      - "WATCH=true"
-      - "STATEFILE=default.json"
+      MOCK_REFERENCE: USER_API
     healthcheck:
-      test: ["CMD", "curl", "http://localhost:8080/health"]
-      interval: 1s
-      retries: 100
+      test: "curl --fail http://localhost:8080/health || exit 1"
+      retries: 5
+      timeout: 2s
     networks: 
-      - mockservice            
+      - mockservice       
 
-  build:
+  builder:
     image: node:16.5-alpine
+    container_name: builder
     volumes:
       - ./:/app
     command: npm run build --prefix /app
 
-  k6:
+  k6-runner:
     depends_on:
-      build:
+      builder:
         condition: service_completed_successfully
-      mockapp:
+      mock:
         condition: service_healthy      
     image: loadimpact/k6
+    container_name: k6-runner
     volumes:
       - ./dist:/dist
     command: run /dist/tests.js --config /dist/options/smoke.json --http-debug
     environment:
-      - APP_DOMAIN=http://mockapp:8080      
+      - APP_DOMAIN=http://mock:8080      
     networks: 
       - mockservice        
 

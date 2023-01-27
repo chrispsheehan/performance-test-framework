@@ -12,6 +12,8 @@ jobs:
             - name: Checkout project
               uses: actions/checkout@v2
             - name: Setup Node.js
-              uses: actions/setup-node@v2.1.4
+              uses: actions/setup-node@v3
+              with:
+                node-version: 16
             - name: Build
-              run: npm run bundle
+              run: npm run build

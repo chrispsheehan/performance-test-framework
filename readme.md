@@ -17,8 +17,12 @@ References:
 ## Run locally
 
 ```bash
+# build code
 npm run build
 
+
+
+# run code
 APP_DOMAIN=http://localhost:8080 k6 run dist/tests.js --config dist/options/smoke.json --http-debug
 ```
 
