@@ -6,14 +6,48 @@ on:
     branches: [ main ]
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps: 
-            - name: Checkout project
-              uses: actions/checkout@v3
-            - name: Setup Node.js
-              uses: actions/setup-node@v3
-              with:
-                node-version: 16
-            - name: Build
-              run: yarn build
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout project
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Build
+        run: yarn build
+
+      - uses: actions/upload-artifact@master
+        with:
+          name: dist-build
+          path: dist
+
+  test:
+    env:
+      MOCK_REFERENCE: 'CI'
+      
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@master
+        with:
+          name: dist-build
+          path: dist
+
+      - name: check-dist
+        run: ls dist
+
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Run the build process with Docker
+        uses: addnab/docker-run-action@v3
+        with:
+            image: chrispsheehan/example-mock:e0d243
+            options: -p 8080:8080
+
+      - name: Ping
+        run: curl localhost:8080/health
