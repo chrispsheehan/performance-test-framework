@@ -45,9 +45,12 @@ jobs:
 
       - name: Run the build process with Docker
         uses: addnab/docker-run-action@v3
+        env:
+          STATE_FILE: /home/runner/work/state.json
+          MOCK_REFERENCE: 'CI'
         with:
           image: chrispsheehan/example-mock:e0d243
-          options: -p 8080:8080
+          options: -p 8080:8080 -d
           run: node index.js
 
 
