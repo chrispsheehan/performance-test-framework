@@ -48,4 +48,4 @@ jobs:
 
 
       - name: Ping
-        run: curl --head -X GET --retry 5 --retry-connrefused --retry-delay 1 localhost:8080/health
+        run: sleep 5 && curl localhost:8080/health
