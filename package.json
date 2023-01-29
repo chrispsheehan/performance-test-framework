@@ -8,7 +8,7 @@
   "scripts": {
     "bundle": "webpack",
     "copy-options": "copyfiles -u 1 **/options/*.json dist",
-    "build": "npm install && npm run bundle && npm run copy-options"
+    "build": "yarn && yarn bundle && yarn copy-options"
   },
   "dependencies": {
     "@babel/core": "^7.10.2",
