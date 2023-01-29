@@ -40,9 +40,6 @@ jobs:
       - name: check-dist
         run: ls dist
 
-      - name: Check out the repo
-        uses: actions/checkout@v3
-
       - name: Run the build process with Docker
         run: /usr/bin/docker run --detach -p 8080:8080 -e MOCK_REFERENCE=CI chrispsheehan/example-mock:e0d243
 
