@@ -46,8 +46,10 @@ jobs:
       - name: Run the build process with Docker
         uses: addnab/docker-run-action@v3
         with:
-            image: chrispsheehan/example-mock:e0d243
-            options: -p 8080:8080
+          image: chrispsheehan/example-mock:e0d243
+          options: -p 8080:8080
+          run: node index.js
+
 
       - name: Ping
         run: curl localhost:8080/health
