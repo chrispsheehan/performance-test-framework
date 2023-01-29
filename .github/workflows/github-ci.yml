@@ -46,6 +46,11 @@ jobs:
       - name: Run the build process with Docker
         run: /usr/bin/docker run --detach -p 8080:8080 -e MOCK_REFERENCE=CI chrispsheehan/example-mock:e0d243
 
-
       - name: Ping
         run: sleep 5 && curl localhost:8080/health
+
+      - name: Run k6 local test
+        uses: grafana/k6-action@v0.2.0
+        with:
+          filename: /dist/tests.js
+          flags: --config /dist/options/smoke.json
