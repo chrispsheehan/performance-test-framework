@@ -46,8 +46,5 @@ jobs:
       - name: Ping
         run: sleep 10 && curl localhost:8080/health
 
-      - name: read files
-        run: ls dist
-
       - name: Run tests
         run: docker-compose run k6-runner
