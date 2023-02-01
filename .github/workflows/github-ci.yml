@@ -52,7 +52,7 @@ jobs:
       - name: Run k6 local test
         uses: grafana/k6-action@v0.2.0
         env:
-          APP_DOMAIN: http://localhost:8080
+          APP_DOMAIN: http://host.docker.internal:8080
         with:
           filename: dist/tests.js
           flags: --config dist/options/smoke.json
