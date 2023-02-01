@@ -27,8 +27,8 @@ services:
 
   k6-runner:
     depends_on:
-      builder:
-        condition: service_completed_successfully
+      # builder:
+      #   condition: service_completed_successfully
       mock:
         condition: service_healthy      
     image: loadimpact/k6

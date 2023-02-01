@@ -17,37 +17,37 @@ jobs:
           node-version: 16
 
       - name: Build
-        run: sudo docker-compose run builder
+        run: yarn build
 
       - uses: actions/upload-artifact@master
         with:
           name: dist-build
           path: dist
 
-  # test:
-  #   env:
-  #     MOCK_REFERENCE: 'CI'
+  test:
+    env:
+      MOCK_REFERENCE: 'CI'
       
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - uses: actions/download-artifact@master
-  #       with:
-  #         name: dist-build
-  #         path: dist
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@master
+        with:
+          name: dist-build
+          path: dist
 
-  #     - name: check-dist
-  #       run: ls dist
+      - name: check-dist
+        run: ls dist
 
-  #     - name: Start mock
-  #       run: docker-compose up --detach mock
+      - name: Start mock
+        run: docker-compose up --detach mock
 
-  #     - name: Ping
-  #       run: sleep 10 && curl localhost:8080/health
+      - name: Ping
+        run: sleep 10 && curl localhost:8080/health
 
-  #     - name: read files
-  #       run: ls dist
+      - name: read files
+        run: ls dist
 
   #     - name: Run k6 local test
   #       uses: grafana/k6-action@v0.2.0
