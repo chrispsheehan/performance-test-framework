@@ -41,7 +41,7 @@ jobs:
         run: ls dist
 
       - name: Start mock
-        run: docker-compose up mock --detach
+        run: docker-compose up --detach mock
 
       - name: Ping
         run: sleep 10 && curl localhost:8080/health
