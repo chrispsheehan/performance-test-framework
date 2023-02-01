@@ -20,7 +20,17 @@ References:
   - Execute the tests via k6
 
 ```bash
+docker-compose run builder
+
 docker-compose run --rm k6-runner && docker-compose stop
+```
+
+## ..OR run in docker
+
+```bash
+docker run -i --rm -v ${PWD}/:/app node:16.5-alpine npm run build --prefix /app
+
+docker run -i --rm -v ${PWD}/dist:/dist -e APP_DOMAIN=http://localhost:8080 loadimpact/k6 run /dist/tests.js --config /dist/options/smoke.json
 ```
 
 ## Tags
