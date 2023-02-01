@@ -49,6 +49,9 @@ jobs:
       - name: read files
         run: ls dist
 
+      - name: Run tests
+        run: docker-compose run k6-runner
+
   #     - name: Run k6 local test
   #       uses: grafana/k6-action@v0.2.0
   #       env:
