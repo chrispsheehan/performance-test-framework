@@ -46,5 +46,8 @@ jobs:
       - name: Ping
         run: sleep 10 && curl localhost:8080/health
 
+      - name: read files
+        run: ls dist
+
       # - name: Run k6 local test
       #   run: /usr/bin/docker run -i -v dist:/dist -e APP_DOMAIN=http://localhost:8080 loadimpact/k6 run //dist//tests.js --config //dist//options//smoke.json
