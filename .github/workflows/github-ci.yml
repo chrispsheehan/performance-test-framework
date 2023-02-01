@@ -41,7 +41,7 @@ jobs:
         run: ls dist
 
       - name: Run the build process with Docker
-        run: /usr/bin/docker run --detach -p 8080:8080 -e MOCK_REFERENCE=CI -t mock chrispsheehan/example-mock:b160ff
+        run: /usr/bin/docker run --detach -p 8080:8080 -e MOCK_REFERENCE=CI --name mock chrispsheehan/example-mock:b160ff
 
       - name: Ping
         run: sleep 10 && curl localhost:8080/health
