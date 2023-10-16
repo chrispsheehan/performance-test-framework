@@ -60,3 +60,8 @@ export let options = {
   },
 };
 ```
+
+## Gotchas
+
+- ERROR: `no matching manifest for linux/arm64/v8 in the manifest list entries`
+- FIX: add `platform: linux/x86_64` to docker-compose

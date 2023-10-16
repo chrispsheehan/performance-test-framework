@@ -4,6 +4,7 @@ services:
 
   mock:
     image: chrispsheehan/example-mock:6d94d1
+    platform: linux/x86_64
     container_name: mock
     volumes:
       - ./state/state.json:/state.json
@@ -20,6 +21,7 @@ services:
 
   builder:
     image: node:16.5-alpine
+    platform: linux/x86_64
     container_name: builder
     volumes:
       - ./:/app
