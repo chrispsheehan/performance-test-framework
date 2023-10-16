@@ -12,25 +12,20 @@ References:
 - [Using node modules i.e. faker](https://github.com/k6io/template-es6)
 - [Mock api repository](https://github.com/chrispsheehan/simple-mock)
 
+## Build code in docker
+
+```bash
+docker run -i --rm -v ${PWD}/:/app node:16.5-alpine npm run build --prefix /app
+```
+
 ## Run in docker-compose
 
 - The below command will;
   - Start a target mock api
-  - Build the test code
   - Execute the tests via k6
 
 ```bash
-docker-compose run builder
-
 docker-compose run --rm k6-runner && docker-compose stop
-```
-
-## ..OR run in docker
-
-```bash
-docker run -i --rm -v ${PWD}/:/app node:16.5-alpine npm run build --prefix /app
-
-docker run -i --rm -v ${PWD}/dist:/dist -e APP_DOMAIN=http://localhost:8080 loadimpact/k6 run /dist/tests.js --config /dist/options/smoke.json
 ```
 
 ## Tags

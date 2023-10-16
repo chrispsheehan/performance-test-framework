@@ -17,23 +17,14 @@ services:
       retries: 5
       timeout: 2s
     networks: 
-      - mockservice       
-
-  builder:
-    image: node:16.5-alpine
-    platform: linux/x86_64
-    container_name: builder
-    volumes:
-      - ./:/app
-    command: npm run build --prefix /app
+      - mockservice
 
   k6-runner:
     depends_on:
-      # builder:
-      #   condition: service_completed_successfully
       mock:
-        condition: service_healthy      
+        condition: service_healthys
     image: loadimpact/k6
+    platform: linux/x86_64
     container_name: k6-runner
     volumes:
       - ./dist:/dist
