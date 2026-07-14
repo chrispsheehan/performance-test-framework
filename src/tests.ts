@@ -1,8 +1,8 @@
 import { check, group } from 'k6';
-import { Params } from 'k6/ws';
+import type { Params } from 'k6/http';
 
-import { createUser, getUsers } from './actions.user/request.user';
-import { createRequestConfig } from './lib/request.helper';
+import { createUser, getUsers } from './actions.user/request.user.js';
+import { createRequestConfig } from './lib/request.helper.js';
 
 export let options = {
   

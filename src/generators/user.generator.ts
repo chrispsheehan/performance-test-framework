@@ -1,11 +1,9 @@
-import * as faker from 'faker/locale/en_GB';
-
-import User from './types/User';
+import faker from 'k6/x/faker';
+import type User from './types/User.js';
 
 export function buildUser () : User {
-    
-    return {
-        firstName: faker.name.firstName(),
-        lastName: faker.name.lastName(),
-    }
+  return {
+    firstName: faker.person.firstName(),
+    lastName: faker.person.lastName(),
+  };
 }

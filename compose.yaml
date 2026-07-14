@@ -1,19 +1,21 @@
-version: '3.7'
-
 services:
 
   mock:
-    image: chrispsheehan/example-mock:6d94d1
-    platform: linux/x86_64
+    build:
+      context: ./mock
     container_name: mock
     volumes:
       - ./state/state.json:/state.json
     ports: 
       - "8080:8080"
-    environment:
-      MOCK_REFERENCE: USER_API
     healthcheck:
-      test: "curl --fail http://localhost:8080/health || exit 1"
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://localhost:8080/health').then((response) => process.exit(response.ok ? 0 : 1)).catch(() => process.exit(1))"
+        ]
       retries: 5
       timeout: 2s
     networks: 
@@ -22,8 +24,8 @@ services:
   k6-runner:
     depends_on:
       mock:
-        condition: service_healthys
-    image: loadimpact/k6
+        condition: service_healthy
+    image: grafana/k6:latest
     platform: linux/x86_64
     container_name: k6-runner
     volumes:

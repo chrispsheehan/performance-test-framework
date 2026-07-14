@@ -1,4 +1,4 @@
-import { buildUser } from '../generators/user.generator';
+import { buildUser } from '../generators/user.generator.js';
 
 export function buildUserPayload() {
     

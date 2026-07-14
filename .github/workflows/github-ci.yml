@@ -1,50 +1,44 @@
+name: CI
+
 on:
   push:
     branches:
       - main
-  schedule:
-    - cron: "0 10 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: test
+  cancel-in-progress: true
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-    steps: 
+
+    steps:
       - name: Checkout project
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
+
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: 16
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
 
       - name: Build
-        run: yarn build
+        run: npm run build
 
-      - uses: actions/upload-artifact@master
-        with:
-          name: dist-build
-          path: dist
+      - name: Check dist
+        run: ls -R dist
 
-  test:
-    env:
-      MOCK_REFERENCE: 'CI'
-      
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/download-artifact@master
-        with:
-          name: dist-build
-          path: dist
+      - name: Run k6 tests
+        run: docker compose up --build --exit-code-from k6-runner k6-runner
 
-      - name: check-dist
-        run: ls dist
-
-      - name: Start mock
-        run: docker-compose up --detach mock
-
-      - name: Ping
-        run: sleep 10 && curl localhost:8080/health
-
-      - name: Run tests
-        run: docker-compose run k6-runner
+      - name: Tear down services
+        if: always()
+        run: docker compose down --volumes
