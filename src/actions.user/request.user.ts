@@ -1,6 +1,7 @@
-import http, { Params } from 'k6/http';
-import { setSleep } from '../lib/sleep.helpers';
-import { buildUserPayload } from './payload.user';
+import http from 'k6/http';
+import type { Params } from 'k6/http';
+import { setSleep } from '../lib/sleep.helpers.js';
+import { buildUserPayload } from './payload.user.js';
 
 
 export function getUsers(_url: string, headers : Params){

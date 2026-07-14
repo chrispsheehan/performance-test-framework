@@ -1,15 +1,21 @@
 {
   "compilerOptions": {
-    "target": "es6", 
-    "module": "commonjs",
+    "target": "es2020",
+    "module": "es2020",
+    "moduleResolution": "bundler",
     "importsNotUsedAsValues": "remove",
+    "rootDir": "src",
+    "outDir": "dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
     "skipLibCheck": true,
     "sourceMap": false
-  }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts"]
 }

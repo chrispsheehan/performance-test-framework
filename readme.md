@@ -4,18 +4,21 @@ These example tests are currently pointed at the local mock service in [`mock/`]
 
 To target another URI remove the `mock` service and set the `APP_DOMAIN` environmental variable within the [docker-compose](docker-compose.yaml) file.
 
+This project now uses `tsc` directly for the k6 test build. Test data generation comes from the k6-native [`xk6-faker`](https://faker.x.k6.io/) extension rather than a bundled npm Faker package. The local mock service runs native TypeScript on modern Node without a transpile step.
+
 References:
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [k6](https://k6.io/)
+- [xk6-faker](https://faker.x.k6.io/)
 - [Example](https://github.com/go-automate/k6-typescript-framework)
-- [Using node modules i.e. faker](https://github.com/k6io/template-es6)
-- Local mock API: [`mock/server.js`](mock/server.js)
+- [k6 modules documentation](https://grafana.com/docs/k6/latest/using-k6/modules/)
+- Local mock API: [`mock/server.ts`](mock/server.ts)
 
 ## Build code in docker
 
 ```bash
-docker run -i --rm -v ${PWD}/:/app node:16.5-alpine npm run build --prefix /app
+docker run -i --rm -v ${PWD}/:/app node:20-alpine sh -lc "cd /app && npm ci && npm run build"
 ```
 
 ## Run in docker-compose

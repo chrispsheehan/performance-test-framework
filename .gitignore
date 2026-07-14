@@ -5,4 +5,4 @@ node_modules/
 dist/
 
 # mock state
-state/
+state/state.json
