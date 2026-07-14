@@ -1,8 +1,8 @@
 # PerformanceTestFramework
 
-These example tests are currently pointed at the [MockApp](MockApp), which is hosted in Docker.
+These example tests are currently pointed at the local mock service in [`mock/`](mock), which is built and run via Docker Compose.
 
-To target another URI remove the ``mock`` service and set the ``APP_DOMAIN`` environmental variable within the [docker-compose](docker-compose.yaml) file.
+To target another URI remove the `mock` service and set the `APP_DOMAIN` environmental variable within the [docker-compose](docker-compose.yaml) file.
 
 References:
 
@@ -10,7 +10,7 @@ References:
 - [k6](https://k6.io/)
 - [Example](https://github.com/go-automate/k6-typescript-framework)
 - [Using node modules i.e. faker](https://github.com/k6io/template-es6)
-- [Mock api repository](https://github.com/chrispsheehan/simple-mock)
+- Local mock API: [`mock/server.js`](mock/server.js)
 
 ## Build code in docker
 
@@ -21,7 +21,7 @@ docker run -i --rm -v ${PWD}/:/app node:16.5-alpine npm run build --prefix /app
 ## Run in docker-compose
 
 - The below command will;
-  - Start a target mock api
+  - Build and start the target mock API
   - Execute the tests via k6
 
 ```bash

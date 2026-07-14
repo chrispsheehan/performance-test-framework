@@ -1,0 +1,9 @@
+{
+  "name": "performance-test-framework-mock",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local mock user CRUD service for k6 performance tests",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
