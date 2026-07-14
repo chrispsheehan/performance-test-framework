@@ -1,4 +1,4 @@
-# PerformanceTestFramework
+# Performance Test Framework
 
 These example tests are currently pointed at the local mock service in [`mock/`](mock), which is built and run via Docker Compose.
 
